@@ -31,8 +31,8 @@ export const getAgents = () => {
     });
 };
 
-export const getAgentDetails = (data) => {
-  return api("get", constants.API.GETaGENTdETAILS, data)
+export const getAgentDetails = (id) => {
+  return api("get", constants.API.GETaGENTdETAILS+ id)
     .then((res) => {
       return res.data;
     })
@@ -52,7 +52,7 @@ export const createAgent = (data) => {
 };
 
 export const updateAgent = (id, data) => {
-  return api("post", constants.API.UPDATEaGENT + id, data)
+  return api("put", constants.API.UPDATEaGENT + id, data)
     .then((res) => {
       return res.data;
     })
