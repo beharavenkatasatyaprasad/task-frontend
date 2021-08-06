@@ -27,7 +27,6 @@ body {
   color: #186aa5;
 }
 
-
 #header_sec {
   width: 100%;
   top: 0;
@@ -35,51 +34,51 @@ body {
   z-index: 100000;
 }
 
-
 .search_input {
-	height: 46px !important;
-	border-radius: 0px !important;
-	transition: all 0.5s;
+  height: 46px !important;
+  border-radius: 0px !important;
+  transition: all 0.5s;
 }
 
 .search_input:focus {
-	height: 44px !important;
-	border: 2px solid #007bff;
+  height: 44px !important;
+  border: 2px solid #007bff;
 }
 
-.name{
-  font-weight:bold;
-  letter-spacing:1px;
+.name {
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.candidate-details p{
+.candidate-details p {
   margin-bottom: 0rem;
 }
 
-.status{
+.status {
   border-radius: 5px;
   font-size: smaller;
+  float: right;
 }
 
-.experience , .qualification , .age-gender {
+.experience,
+.qualification,
+.age-gender {
   font-size: smaller;
   font-weight: bold;
-  letter-spacing:0.5px;
-  text-transform:capitalize;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
 }
 
-.description{
-  font-size: small;
-  letter-spacing:0.5px;
+.description {
+  font-size: 11px;
+  letter-spacing: 0.5px;
   line-height: 18px;
+  text-align: justify;
+  height: 160px;
+  overflow: scroll;
 }
 
-.card{
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+.card {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin: 22px;
-}
-
-.candidate-photo img{
-  width:60px;
-  border-radius: 50%;
 }

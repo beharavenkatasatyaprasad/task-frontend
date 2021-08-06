@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { AwesomeButton } from "react-awesome-button";
+import { createAgent } from "../api";
 
 const customStyles = {
   content: {
@@ -17,7 +18,7 @@ const customStyles = {
   },
 };
 
-export default function CreateAgentModal({ modalIsOpen, closeModal }) {
+export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
   const [name, setname] = useState("");
   const [experience, setexperience] = useState("");
   const [description, setdescription] = useState("");
@@ -28,13 +29,36 @@ export default function CreateAgentModal({ modalIsOpen, closeModal }) {
   const [email, setemail] = useState("");
   const [mbl, setmbl] = useState("");
 
+  const Addagent = () => {
+    const data = {
+      name,
+      experience,
+      description,
+      qualification,
+      age,
+      gender,
+      status,
+      email,
+      mbl,
+    };
+    createAgent(data)
+      .then((res) => {
+        console.log(res);
+        reload();
+        closeModal(closeModal);
+      })
+      .catch((Err) => {
+        console.log(Err);
+      });
+  };
+
   return (
     <div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="CFreate Agents Modal"
+        contentLabel="Create Agents Modal"
       >
         <div className="form-group mb-3">
           <label for="name">Name :</label>
@@ -48,7 +72,7 @@ export default function CreateAgentModal({ modalIsOpen, closeModal }) {
         </div>
         <div className="form-group mb-3">
           <label for="Experience">Experience :</label>
-          <textarea
+          <input
             type="text"
             value={experience}
             onChange={(e) => setexperience(e.target.value)}
@@ -129,7 +153,13 @@ export default function CreateAgentModal({ modalIsOpen, closeModal }) {
             id="mobile"
           />
         </div>
-        <AwesomeButton onPress={(e) => {}} type="secondary" className="mx-2">
+        <AwesomeButton
+          onPress={(e) => {
+            Addagent();
+          }}
+          type="secondary"
+          className="mx-2"
+        >
           Add Agent
         </AwesomeButton>
       </Modal>
