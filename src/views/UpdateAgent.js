@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { getAgentDetails } from "../api";
 import { AwesomeButton } from "react-awesome-button";
 import { updateAgent } from "../api";
 
 export default function UpdateAgent() {
   const [loading, setloading] = useState(true);
-  const [details, setdetails] = useState({});
   const [name, setname] = useState("");
   const [experience, setexperience] = useState("");
   const [description, setdescription] = useState("");
@@ -17,6 +16,7 @@ export default function UpdateAgent() {
   const [email, setemail] = useState("");
   const [mbl, setmbl] = useState("");
   const params = useParams();
+  const history = useHistory();
 
   const updateagent = () => {
     const data = {
@@ -33,6 +33,7 @@ export default function UpdateAgent() {
     updateAgent(params.agentId, data)
       .then((res) => {
         console.log(res);
+        history.push("/");
       })
       .catch((Err) => {
         console.log(Err);
@@ -55,6 +56,7 @@ export default function UpdateAgent() {
         setqualification(resp.qualification);
         setgender(resp.gender);
         setemail(resp.email);
+
         setloading(false);
       })
       .catch((Err) => {
@@ -128,19 +130,29 @@ export default function UpdateAgent() {
               id="gender"
               className="form-control"
             >
+              <option selected value="">
+                -- select one --
+              </option>
               <option value="MALE">MALE</option>
               <option value="FEMALE">FEMALE</option>
             </select>
           </div>
           <div className="form-group mb-3">
             <label htmlFor="status">Status :</label>
-            <input
+            <select
               value={status}
               onChange={(e) => setstatus(e.target.value)}
-              type="text"
-              className="form-control"
+              name=""
               id="status"
-            />
+              className="form-control"
+            >
+              <option selected value="">
+                -- select one --
+              </option>
+              <option value="Available">Available</option>
+              <option value="Not Avalilable">Not Avalilable</option>
+              <option value="On a GIG">On a GIG</option>
+            </select>
           </div>
           <div className="form-group mb-3">
             <label htmlFor="email">email :</label>
@@ -163,6 +175,17 @@ export default function UpdateAgent() {
             />
           </div>
           <AwesomeButton
+            disabled={
+              !name ||
+              !experience ||
+              !description ||
+              !qualification ||
+              !age ||
+              !gender ||
+              !status ||
+              !email ||
+              !mbl
+            }
             onPress={(e) => {
               updateagent();
             }}

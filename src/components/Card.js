@@ -20,7 +20,13 @@ export default function Card({ candidate, reload }) {
               />
             </div>
             <div className="col-sm-12 col-md-12 col-lg-3 candidate-details col-lg-9 pr-1 pt-2 col-sm-12 p-0 m-0">
-              <span className="float-right status badge-secondary px-1">
+              <span
+                className={`float-right status badge-secondary px-1 ${
+                  candidate.status === "Available"
+                    ? "text-success"
+                    : "text-danger"
+                } `}
+              >
                 {candidate.status}
               </span>
               <p className="name">{candidate.name}</p>

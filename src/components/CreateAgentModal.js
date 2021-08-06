@@ -61,7 +61,7 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
         contentLabel="Create Agents Modal"
       >
         <div className="form-group mb-3">
-          <label for="name">Name :</label>
+          <label htmlFor="name">Name :</label>
           <input
             type="text"
             value={name}
@@ -71,7 +71,7 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
           />
         </div>
         <div className="form-group mb-3">
-          <label for="Experience">Experience :</label>
+          <label htmlFor="Experience">Experience :</label>
           <input
             type="text"
             value={experience}
@@ -81,7 +81,7 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
           />
         </div>
         <div className="form-group mb-3">
-          <label for="Description">Description :</label>
+          <label htmlFor="Description">Description :</label>
           <textarea
             type="text"
             value={description}
@@ -91,7 +91,7 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
           />
         </div>
         <div className="form-group mb-3">
-          <label for="Qualification">Qualification :</label>
+          <label htmlFor="Qualification">Qualification :</label>
           <input
             type="text"
             value={qualification}
@@ -101,7 +101,7 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
           />
         </div>
         <div className="form-group mb-3">
-          <label for="age">age :</label>
+          <label htmlFor="age">age :</label>
           <input
             type="text"
             value={age}
@@ -111,7 +111,7 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
           />
         </div>
         <div className="form-group mb-3">
-          <label for="gender">Gender :</label>
+          <label htmlFor="gender">Gender :</label>
           <select
             value={gender}
             onChange={(e) => setgender(e.target.value)}
@@ -119,22 +119,32 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
             id="gender"
             className="form-control"
           >
+            <option selected value="">
+              -- select one --
+            </option>
             <option value="MALE">MALE</option>
             <option value="FEMALE">FEMALE</option>
           </select>
         </div>
         <div className="form-group mb-3">
-          <label for="status">Status :</label>
-          <input
+          <label htmlFor="status">Status :</label>
+          <select
             value={status}
             onChange={(e) => setstatus(e.target.value)}
-            type="text"
-            className="form-control"
+            name=""
             id="status"
-          />
+            className="form-control"
+          >
+            <option selected value="">
+              -- select one --
+            </option>
+            <option value="Available">Available</option>
+            <option value="Not Avalilable">Not Avalilable</option>
+            <option value="On a GIG">On a GIG</option>
+          </select>
         </div>
         <div className="form-group mb-3">
-          <label for="email">email :</label>
+          <label htmlFor="email">email :</label>
           <input
             value={email}
             onChange={(e) => setemail(e.target.value)}
@@ -144,7 +154,7 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
           />
         </div>
         <div className="form-group mb-3">
-          <label for="mobile">Mobile :</label>
+          <label htmlFor="mobile">Mobile :</label>
           <input
             type="text"
             value={mbl}
@@ -154,6 +164,17 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
           />
         </div>
         <AwesomeButton
+          disabled={
+            !name ||
+            !experience ||
+            !description ||
+            !qualification ||
+            !age ||
+            !gender ||
+            !status ||
+            !email ||
+            !mbl
+          }
           onPress={(e) => {
             Addagent();
           }}
