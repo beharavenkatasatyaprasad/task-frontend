@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AwesomeButton } from "react-awesome-button";
 
-const Navbar = () => {
+const Navbar = ({ openModal }) => {
   const [scrollHeaderClass, setscrollHeaderClass] = useState("top");
 
   useEffect(() => {
@@ -27,7 +27,13 @@ const Navbar = () => {
                 <div className="d-flex justify-content-between">
                   <p className={`header_logo my-auto`}>TEST APP</p>
                   <div className="my-auto">
-                    <AwesomeButton type="secondary" className="mx-2">
+                    <AwesomeButton
+                      onPress={(e) => {
+                        openModal();
+                      }}
+                      type="secondary"
+                      className="mx-2"
+                    >
                       Add Agent
                     </AwesomeButton>
                   </div>

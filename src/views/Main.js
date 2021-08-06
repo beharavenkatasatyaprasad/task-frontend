@@ -1,31 +1,37 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { AwesomeButton } from "react-awesome-button";
+import CreateAgentModal from "../components/CreateAgentModal";
+import Card from "../components/Card";
 
 function Main() {
   const [loading, setloading] = useState(false);
   const [query, setquery] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [agents, setagents] = useState([]);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <>
-      <Navbar />
-      <div className="d-flex my-5 pt-2 justify-content-center">
-        <input
-         className=""
-          value={query}
-          onChange={(e) => setquery(e.target.value)}
-        ></input>
-        <AwesomeButton
-          onPress={() => {
-            setloading(true);
-          }}
-          type="primary"
-        >
-          <span className="material-icons">search</span>
-        </AwesomeButton>
-      </div>
-      <div className="">
-        
+      <Navbar openModal={(e) => openModal()} />
+      <CreateAgentModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <div
+        className={`container-fluid d-flex justify-content-${
+          agents.length > 0 ? "between" : "center"
+        }`}
+      >
+        {agents.length > 0 ? (
+          agents.map((candidate) => {
+            return <Card key={Math.random() + ""} candidate={candidate} />;
+          })
+        ) : (
+          <div className="">No Agents Found</div>
+        )}
       </div>
     </>
   );
