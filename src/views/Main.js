@@ -33,7 +33,7 @@ function Main() {
 
   return (
     <>
-      <Navbar openModal={(e) => openModal()} />
+      <Navbar openModal={(e) => openModal()} reload={(e) => setloading(true)} />
       <CreateAgentModal
         reload={(e) => setloading(true)}
         modalIsOpen={modalIsOpen}

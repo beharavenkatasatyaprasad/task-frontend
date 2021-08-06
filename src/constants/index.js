@@ -5,5 +5,7 @@ export default {
     UPDATEaGENT: "api-v1/updateAgent/",
     DELETEaGENT: "api-v1/deleteAgent/",
     GETaGENTdETAILS: "api-v1/getAgentDetails/",
+    IMPORTbULKaGENTS: "api-v1/importAgents/",
+    EXPORTbULKaGENTS: "api-v1/exportAgents/",
   },
 };
