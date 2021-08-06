@@ -120,7 +120,7 @@ export default function CreateAgentModal({ modalIsOpen, closeModal, reload }) {
             className="form-control"
           >
             <option value="MALE">MALE</option>
-            <option value="MALE">FEMALE</option>
+            <option value="FEMALE">FEMALE</option>
           </select>
         </div>
         <div className="form-group mb-3">

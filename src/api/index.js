@@ -21,8 +21,18 @@ const api = (method, url, data, token = null) => {
     });
 };
 
-export const getAgents = (data) => {
-  return api("get", constants.API.GETaGENTS, data)
+export const getAgents = () => {
+  return api("get", constants.API.GETaGENTS)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+
+export const getAgentDetails = (data) => {
+  return api("get", constants.API.GETaGENTdETAILS, data)
     .then((res) => {
       return res.data;
     })
